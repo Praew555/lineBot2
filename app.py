@@ -17,12 +17,20 @@ def webhook():
 
 @app.route('/callback', methods=['POST'])
 def callback():
+   
     json_line = request.get_json()
     json_line = json.dumps(json_line)
     decoded = json.loads(json_line)
     user = decoded["events"][0]['replyToken']
     userText = decoded["events"][0]['message']['text']
     sendText(user,userText)
+    if (userText == 'สบายดีไหม') :
+        (userText'สบายดี')
+    else  (userText == 'ไปไหน') :
+        userText ('โตแล้ว')
+    else :
+       userText ('อะไรนะ')
+
     return '',200
 
 def sendText(user, text):
